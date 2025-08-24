@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet d'étude</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="images/banniere.png" alt="Bannière du projet">
+  </header>
+
+  <div class="container">
+    <p class="project-description">
+      <b>Sujet :</b> Projet d'étude visant à démontrer l'écart entre les probabilités issues d'un tirage aléatoire à l'aveugle et d'un tirage subjectif sur la base d'un sondage sur 103 462 personnes à qui il a été demandé de nommer une carte à jouer et une position dans le jeu (nombre de 1 à 52 inclus).
+    </p>
+
+    <h1>Générateur de cartes et nombres aléatoires</h1>
+
+    <div class="card">
+      <img id="cardDisplay" src="images/back.svg" alt="Carte">
+    </div>
+
+    <div class="number" id="numberDisplay">Clique sur le nombre</div>
+
+    <div id="controls">
+      <button id="changeCardBtn" class="control-btn">
+        <b>Changer la carte</b>
+        <img src="images/cards.svg" alt="Icône carte" class="btn-icon">
+      </button>
+      <button id="changeNumberBtn" class="control-btn">
+        <b>Changer le nombre</b>
+        <img src="images/dices.svg" alt="Icône dés" class="btn-icon">
+      </button>
+    </div>
+
+    <!-- Bouton probabilité isolé visuellement mais sans impacter les deux autres -->
+    <button id="showProbabilityBtn" class="control-btn probability-btn">
+      <b>Afficher la probabilité</b>
+	  <img src="images/stats.svg" alt="Icône stats" class="btn-icon">
+    </button>
+
+    <!-- Réservation d'espace + fondu (pas de display:none) -->
+    <p id="probabilityDisplay" class="probability-text hidden"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
