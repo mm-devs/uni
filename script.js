@@ -195,3 +195,10 @@ showProbabilityBtn.addEventListener("click", () => {
     probabilityDisplay.classList.remove("hidden");
   }
 });
+
+// --- Réduction de la bannière au scroll ---
+window.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+  // seuil volontairement un peu plus élevé pour éviter les micro-bugs sur mobile
+  header.classList.toggle("shrink", window.scrollY > 80);
+});

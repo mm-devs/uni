@@ -23,18 +23,33 @@ body {
 
 /* --- Bannière --- */
 header {
-  background: #CECECE;
+  position: sticky;      /* reste collée en haut (plus fluide que fixed sur mobile) */
+  top: 0;
+  z-index: 1000;
+  background: #004080;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: padding 0.3s ease; /* animation fluide */
 }
 header img {
   max-width: 300px;
   width: 100%;
   height: auto;
+  transition: transform 0.3s ease, max-width 0.3s ease;
 }
+
+/* État réduit quand on scrolle */
+header.shrink {
+  padding: 5px 0;
+}
+header.shrink img {
+  max-width: 200px;
+  transform: scale(0.9);
+}
+
 
 .project-description {
   max-width: 500px;
