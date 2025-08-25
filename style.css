@@ -204,13 +204,13 @@ header.shrink img {
   }
 }
 
-/* Mobile : désactivation du hover + gestion via active */
+/* Mobile : désactivation du hover + gestion via active (uniquement boutons bleus) */
 @media (hover: none) and (pointer: coarse) {
-  .control-btn:hover {
+  .control-btn:not(.probability-btn):hover {
     background-color: #007bff; /* reset pour mobile */
     transform: none;
   }
-  .control-btn:active {
+  .control-btn:not(.probability-btn):active {
     background-color: #0056b3;
     transform: none; /* pas d’élévation */
   }
