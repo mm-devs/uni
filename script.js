@@ -1,4 +1,4 @@
-// --- Suite Mnemonica (ordre fixe des 52 cartes) ---
+// --- Suite chapelet (ordre fixe des 52 cartes) ---
 const chapelet = [
   "10D","8C","3H","7H","5D","JD","7C","KC","6C","10S","AH","8H","4D",
   "2S","5C","7D","8S","AC","6S","2H","AS","QD","9C","4H","JS",
@@ -9,7 +9,7 @@ const chapelet = [
 
 // --- Préchargement des cartes ---
 function preloadCards() {
-  mnemonica.forEach(cardCode => {
+  chapelet.forEach(cardCode => {
     const img = new Image();
     img.src = `images/${cardCode}.svg`;
   });
@@ -55,23 +55,23 @@ function resetIdleTimer() {
 // --- Vérifier cohérence carte ↔ numéro ---
 function isCoherent() {
   if (lastCard === null || lastNumber === null) return false;
-  return mnemonica[lastNumber - 1] === lastCard;
+  return chapelet[lastNumber - 1] === lastCard;
 }
 
 // --- Vérifier si carte et nombre sont en miroir ---
 function isMirror() {
   if (lastCard === null || lastNumber === null) return false;
-  return mnemonica[53 - lastNumber - 1] === lastCard;
+  return chapelet[53 - lastNumber - 1] === lastCard;
 }
 
 // --- Fonctions de synchronisation (affichent uniquement l’élément cliqué) ---
 function syncCardWithNumber() {
-  const cardCode = mnemonica[lastNumber - 1];
+  const cardCode = chapelet[lastNumber - 1];
   cardDisplay.src = `images/${cardCode}.svg`;
   lastCard = cardCode;
 }
 function syncNumberWithCard() {
-  const index = mnemonica.indexOf(lastCard);
+  const index = chapelet.indexOf(lastCard);
   numberDisplay.textContent = index + 1;
   lastNumber = index + 1;
 }
@@ -91,7 +91,7 @@ cardDisplay.addEventListener("click", () => {
     if (isCoherent()) {
       // Cohérent → valeur miroir (de la carte)
       const mirrorIndex = 53 - lastNumber;
-      lastCard = mnemonica[mirrorIndex - 1];
+      lastCard = chapelet[mirrorIndex - 1];
       cardDisplay.src = `images/${lastCard}.svg`;
     } else if (isMirror()) {
       // Déjà en miroir → remettre cohérence (carte = carte à la position du nombre)
@@ -125,11 +125,11 @@ numberDisplay.addEventListener("click", () => {
       numberDisplay.textContent = lastNumber;
     } else if (isMirror()) {
       // Déjà en miroir → remettre cohérence (nombre = position réelle de la carte)
-      lastNumber = mnemonica.indexOf(lastCard) + 1;
+      lastNumber = chapelet.indexOf(lastCard) + 1;
       numberDisplay.textContent = lastNumber;
     } else {
       // Ni cohérent ni miroir → s’aligner sur la carte
-      lastNumber = mnemonica.indexOf(lastCard) + 1;
+      lastNumber = chapelet.indexOf(lastCard) + 1;
       numberDisplay.textContent = lastNumber;
     }
     pendingReveal = "card";
@@ -160,15 +160,15 @@ function calculateProbability() {
   if (!lastCard || !lastNumber) return null;
 
   const suit = lastCard.slice(-1);
-  const indexCard = mnemonica.indexOf(lastCard) + 1;
+  const indexCard = chapelet.indexOf(lastCard) + 1;
   let stat = 0;
 
   // 2) Cohérent
-  if (mnemonica[lastNumber - 1] === lastCard) {
+  if (chapelet[lastNumber - 1] === lastCard) {
     stat = (lastNumber + 11) * 0.0001;
 
   // 3) Miroir
-  } else if (mnemonica[53 - lastNumber - 1] === lastCard) {
+  } else if (chapelet[53 - lastNumber - 1] === lastCard) {
     stat = indexCard * 0.0001 + 0.01;
 
   // 1) Aucun rapport
