@@ -1,10 +1,10 @@
 // --- Suite Mnemonica (ordre fixe des 52 cartes) ---
-const mnemonica = [
-  "4C","2H","7D","3C","4H","6D","AS","5H","9S","2S","QH","3D","QC",
-  "8H","6S","5S","9H","KC","2D","JH","3S","8S","6H","10C","5D",
-  "KD","2C","3H","8D","5C","KS","JD","8C","10S","KH","JC","7S",
-  "10H","AD","4S","7H","4D","AC","9C","JS","QD","7C","QS","10D",
-  "6C","AH","9D"
+const chapelet = [
+  "10D","8C","3H","7H","5D","JD","7C","KC","6C","10S","AH","8H","4D",
+  "2S","5C","7D","8S","AC","6S","2H","AS","QD","9C","4H","JS",
+  "4C","QH","KH","3S","10C","6H","QS","9H","3D","5H","KD","2C",
+  "8D","9S","AD","2D","7S","QC","9D","KS","4S","6D","JC","10H",
+  "5S","JH","3C"
 ];
 
 // --- Préchargement des cartes ---
