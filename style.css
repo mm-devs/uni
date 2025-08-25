@@ -81,34 +81,31 @@ header.shrink img {
 
 /* --- Zone Carte et Nombre --- */
 .card {
-  position: relative;        /* nécessaire pour le pseudo-élément */
-  border-radius: 10px;
-  font-size: 28px;
-  user-select: none;
-  transition: background 0.3s, transform 0.2s;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  background: transparent;
+  position: relative;
   display: inline-block;
+  border-radius: 10px;
+  background: transparent;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  outline: 1px solid #000; /* contour noir fixe */
+  outline-offset: -1px;
+}
+
+.card-inner {
+  display: block;
+  border-radius: 10px;
+  transition: transform 0.2s ease; /* animation hover fluide */
+}
+
+.card:hover .card-inner {
+  transform: scale(1.03); /* seul l'intérieur grossit */
 }
 
 .card img {
   display: block;
-  border-radius: 10px;
   width: 150px;
   max-width: 80vw;
+  border-radius: 10px;
 }
-
-/* Bord superposé devant l'image */
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  border: 1px solid #000;      /* contour noir fin */
-  border-radius: 10px;          /* même rayon que l'image */
-  pointer-events: none;         /* ne bloque pas le clic sur l'image */
-  box-sizing: border-box;
-}
-
 
 .number {
   margin: 15px;
